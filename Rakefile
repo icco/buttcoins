@@ -6,6 +6,8 @@ require 'csv'
 require 'open-uri'
 require 'time'
 
+require './lib/buttcoins'
+
 desc "Do stuff!"
 task :cron do
   raise NameError.new "COINBASE_API_KEY is unset." if not ENV['COINBASE_API_KEY']
@@ -16,13 +18,8 @@ end
 
 desc "Get most recent entries in the block chain."
 task :mtgox_blocks do
-  url = "http://data.mtgox.com/api/1/BTCUSD/depth/fetch"
-  data = JSON.parse(open(url).read)["return"]["asks"].map {|e| e["datetime"] = Time.at(e["stamp"].to_i/1000000); e }.sort do |a,b|
-    a["datetime"] <=> b["datetime"]
-  end
-
-  data.each do |entry|
-    puts "#{entry["datetime"].httpdate}: #{entry["price"]}"
+  ButtCoins::mtgox_blocks.each do |entry|
+    puts entry
   end
 end
 
