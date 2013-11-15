@@ -25,23 +25,14 @@ end
 
 desc "Print last 2000 approved transactions on MtGox."
 task :mtgox_trans do
-  # Last 2000 transactions on mtgox
-  # http://bitcoincharts.com/about/markets-api/
-  url = "http://api.bitcoincharts.com/v1/trades.csv?symbol=mtgoxUSD"
-  CSV.new(open(url)).each do |date, amt, qty|
-    date = Time.at(date.to_i)
-    puts "#{date.httpdate}: #{amt}"
+  ButtCoins::mtgox_transactions.each do |entry|
+    puts entry
   end
 end
 
 desc "Get last 30 day Average price."
 task :thirty_day do
-  # Historical Data from BlockChain
-  url = "http://blockchain.info/charts/market-price?showDataPoints=true&timespan=30days&show_header=true&daysAverageString=1&scale=0&format=csv"
-  CSV.new(open(url)).each do |date, price|
-    date = Time.at(date.to_i/1000)
-    price = price.to_f
-
-    puts "#{date.httpdate}: #{price}"
+  ButtCoins::thirty_day.each do |entry|
+    puts entry
   end
 end
