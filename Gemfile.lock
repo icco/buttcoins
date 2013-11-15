@@ -23,4 +23,5 @@ PLATFORMS
 
 DEPENDENCIES
   coinbase
+  json
   rake
