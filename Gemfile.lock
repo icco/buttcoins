@@ -1,27 +1,17 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    coinbase (1.3.0)
-      hashie (>= 1.2.0)
-      httparty (>= 0.8.3)
-      money (= 5.1.1)
-      multi_json (>= 1.3.4)
-    hashie (2.0.5)
-    httparty (0.13.0)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
-    i18n (0.6.9)
-    json (1.8.1)
-    money (5.1.1)
-      i18n (~> 0.6.0)
-    multi_json (1.8.4)
-    multi_xml (0.5.5)
+    coinbase (4.2.2)
+    json (2.3.0)
     rake (10.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  coinbase
-  json
+  coinbase (>= 1.3.0)
+  json (>= 2.3.0)
   rake
+
+BUNDLED WITH
+   1.17.3
